@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd apps/web && npm install && npm run build",
+  "outputDirectory": "apps/web/build/client",
+  "installCommand": "cd apps/web && npm install",
+  "devCommand": "cd apps/web && npm run dev",
+  "framework": "vite",
+  "functions": {
+    "apps/web/build/server/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}
