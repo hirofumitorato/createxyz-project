@@ -17,6 +17,10 @@ export default defineConfig({
   // Keep them available via import.meta.env.NEXT_PUBLIC_*
   envPrefix: 'NEXT_PUBLIC_',
   build: {
+    target: ['es2022', 'chrome91', 'firefox90', 'safari15'],
+    minify: 'esbuild',
+  },
+  esbuild: {
     target: 'es2022',
   },
   optimizeDeps: {
