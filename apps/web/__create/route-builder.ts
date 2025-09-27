@@ -131,11 +131,11 @@ async function registerRoutes() {
   }
 }
 
-// Initial route registration
-await registerRoutes();
-
-// Hot reload routes in development
+// Initial route registration - only in development or when SSR is enabled
 if (import.meta.env.DEV) {
+  await registerRoutes();
+
+  // Hot reload routes in development
   import.meta.glob('../src/app/api/**/route.js', {
     eager: true,
   });
