@@ -1,4 +1,5 @@
 {
+  "name": "createxyz-project",
   "buildCommand": "cd apps/web && npm run build",
   "outputDirectory": "apps/web/build/client",
   "installCommand": "cd apps/web && npm install",
