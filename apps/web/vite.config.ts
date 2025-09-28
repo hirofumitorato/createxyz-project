@@ -13,15 +13,20 @@ import { nextPublicProcessEnv } from './plugins/nextPublicProcessEnv';
 import { restart } from './plugins/restart';
 import { restartEnvFileChange } from './plugins/restartEnvFileChange';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   // Keep them available via import.meta.env.NEXT_PUBLIC_*
   envPrefix: 'NEXT_PUBLIC_',
   build: {
     target: ['es2022', 'chrome91', 'firefox90', 'safari15'],
     minify: 'esbuild',
+    sourcemap: false,
   },
   esbuild: {
     target: 'es2022',
+    sourcemap: false,
+  },
+  ssr: {
+    sourcemap: false,
   },
   optimizeDeps: {
     // Explicitly include fast-glob, since it gets dynamically imported and we
@@ -84,16 +89,16 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom'],
   },
-  clearScreen: false,
-  server: {
-    allowedHosts: true,
-    host: '0.0.0.0',
-    port: 4000,
-    hmr: {
-      overlay: false,
-    },
-    warmup: {
-      clientFiles: ['./src/app/**/*', './src/app/root.tsx', './src/app/routes.ts'],
-    },
-  },
-});
+      clearScreen: false,
+      server: {
+        allowedHosts: true,
+        host: '0.0.0.0',
+        port: 4000,
+        hmr: {
+          overlay: false,
+        },
+        warmup: {
+          clientFiles: ['./src/app/**/*', './src/app/root.tsx', './src/app/routes.ts'],
+        },
+      },
+    }));
